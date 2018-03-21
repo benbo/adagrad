@@ -6,7 +6,7 @@ def adagrad(f_grad,x0,data,args,stepsize = 1e-2,fudge_factor = 1e-6,max_it=1000,
     # x0 are the initial parameters (a starting point for the optimization)
     # data is a list of training data
     # args is a list or tuple of additional arguments passed to fgrad
-    # stepsize is the global stepsize fir adagrad
+    # stepsize is the global stepsize for adagrad
     # fudge_factor is a small number to counter numerical instabiltiy
     # max_it is the number of iterations adagrad will run
     # minibatchsize if given is the number of training samples considered in each iteration
@@ -19,7 +19,7 @@ def adagrad(f_grad,x0,data,args,stepsize = 1e-2,fudge_factor = 1e-6,max_it=1000,
     if minibatchsize is None:
         minibatchsize = int(math.ceil(len(data)*minibatch_ratio))
     w=x0
-    for t in range(max_it):
+    for t in xrange(max_it):
         s=sample(xrange(ld),minibatchsize)
         sd=[data[idx] for idx in s]
         grad=f_grad(w,sd,*args)
